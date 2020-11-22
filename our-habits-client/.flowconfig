@@ -1,0 +1,12 @@
+[ignore]
+
+[include]
+./ProfilePage/*
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]
