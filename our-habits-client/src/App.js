@@ -8,6 +8,7 @@ import {
   Link
 } from 'react-router-dom'
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 
 function App() {
   const [title, setTitle] = useState('');
@@ -79,7 +80,9 @@ function App() {
   );
 
   function Home() {
-    return <h2>Home</h2>;
+    return     (<Button variant="contained" color="primary">
+      Hello World
+    </Button>);
   }
 
   function About() {
