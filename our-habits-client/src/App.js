@@ -1,15 +1,8 @@
-import './App.css';
 import React, { useEffect, useState } from 'react';
-import {
-  BrowserRouter as Router,
-  HashRouter,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import IconButton from "@material-ui/core/IconButton";
+import BottomNavigation from './BottomNavigation';
 
 function App() {
   const [title, setTitle] = useState('');
@@ -48,42 +41,27 @@ function App() {
 
   return (
       <HashRouter>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/users">Users</Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/users">
-              <Users />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/users">
+            <Users />
+          </Route>
+        </Switch>
+        <BottomNavigation />
       </HashRouter>
   );
 
   function Home() {
-    return     (<Button variant="contained" color="primary">
-      Hello World
-    </Button>);
+    return (
+      <Button variant="contained" color="primary">
+        Hello World
+      </Button>
+    );
   }
 
   function About() {
@@ -93,35 +71,6 @@ function App() {
   function Users() {
     return <h2>Users</h2>;
   }
-
-  // return (
-  //     <div>
-  //       <h2>Welcome to my app</h2>
-  //       <form onSubmit={handleSubmit}>
-  //         <div className={'form-input'}>
-  //           <input
-  //             type={'text'}
-  //             value={title}
-  //             onChange={event => setTitle(event.target.value)}
-  //             placeholder={'input'}
-  //           />
-  //         </div>
-  //
-  //         <div className={'form-input'}>
-  //           <textarea name={'body'} placeholder={'textarea'} cols={'30'} rows={'10'} value={textArea} onChange={event => setTextArea(event.target.value)} />
-  //         </div>
-  //
-  //         {posts.map(post => (
-  //             <div>
-  //               {post.title}
-  //             </div>
-  //         ))}
-  //
-  //
-  //         <button>Submit</button>
-  //       </form>
-  //     </div>
-  // );
 }
 
 export default App;
