@@ -1,0 +1,25 @@
+{
+  "name": "our-habits-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "client": "cd our-habits-client && npm start",
+    "dev": "concurrently -n 'server,client' -c 'red,green' \"nodemon server.js\" \"npm run client\"",
+    "client-build": "cd our-habits-client && npm run build",
+    "install-client-dependencies": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client-dependencies && npm run client-build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.15",
+    "morgan": "^1.10.0"
+  }
+}
