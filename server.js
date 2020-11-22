@@ -7,6 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 const routes = require('./routes/api');
+const userRoutes = require('./routes/user');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/our-habits-db', {
     useNewUrlParser: true,
@@ -22,7 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // HTTP request logger
 app.use(morgan('tiny'));
-app.use('/api', routes);
+// app.use('/api', routes);
+app.use('/api', userRoutes);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('./our-habits-client/build'));

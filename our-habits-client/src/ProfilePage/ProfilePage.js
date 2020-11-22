@@ -1,16 +1,33 @@
 // @flow
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import getUser from '../api/getUser';
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
 
 type Props = {
-    userName: string
+    username: string
 }
 
-const ProfilePage = ({ userName }: Props) => {
+const ProfilePage = ({ username }: Props) => {
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        getUser(username).then(user => setUser(user));
+    }, [username]);
+
     return (
-        <div>
-            {userName}'s Profile
-        </div>
-    )
+        <>
+            {!user ?
+                (<CircularProgress />) :
+                (<Container>
+                    <Paper>
+                        {user.username}'s Profile{' '}
+                        {user.bio}
+                    </Paper>
+                </Container>)
+            }
+        </>
+    );
 };
 
 export default ProfilePage;
