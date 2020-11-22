@@ -2,6 +2,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route,
   Link
@@ -44,7 +45,7 @@ function App() {
   }
 
   return (
-      <Router>
+      <HashRouter>
         <div>
           <nav>
             <ul>
@@ -74,7 +75,7 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </Router>
+      </HashRouter>
   );
 
   function Home() {
