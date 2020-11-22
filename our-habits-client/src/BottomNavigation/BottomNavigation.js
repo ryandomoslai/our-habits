@@ -8,9 +8,9 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 const BottomNavigation = () => {
     return (
         <MaterialBottomNavigation color={'red'} className={'bottom-navigation'}>
-            <BottomNavigationAction component={Link} to={'/'} label={'Profile'} icon={<AccountBoxIcon />}/>
-            <BottomNavigationAction component={Link} to={'/about'} label={'Feed'} icon={<AccountBoxIcon />}/>
-            <BottomNavigationAction component={Link} to={'/users'} label={'My Habits'} icon={<AccountBoxIcon />}/>
+            <BottomNavigationAction component={Link} to={'/profile'} label={'Profile'} icon={<AccountBoxIcon />}/>
+            <BottomNavigationAction component={Link} to={'/'} label={'Feed'} icon={<AccountBoxIcon />}/>
+            <BottomNavigationAction component={Link} to={'/habits'} label={'My Habits'} icon={<AccountBoxIcon />}/>
         </MaterialBottomNavigation>
     )
 }
