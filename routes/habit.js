@@ -9,6 +9,15 @@ router.get('/habit/:name', (req, res) => {
     });
 });
 
+router.get('/habit/user/:username', (req, res) => {
+    HabitScore.find({ 'username': req.params.username }).then(data => {
+        const userHabits = data.map(habitScore => habitScore.habitName);
+        Habit.find({ 'name': { "$in": userHabits } }).then(data => {
+            res.json(data);
+        })
+    });
+});
+
 router.get(`/habit/user/:username/discovery`, (req, res) => {
     HabitScore.find({ 'username': req.params.username }).then(data => {
         const userHabits = data.map(habitScore => habitScore.habitName);

@@ -12,11 +12,17 @@ const getHabit = (name: String): Promise<Habit> => {
     }).catch(error => Promise.reject(error.message));
 }
 
+const getHabitsForUser = (username: String): Promise<array<Habit>> => {
+    return axios.get(`/api/habit/user/${username}`)
+        .then(response => response.data)
+        .catch(error => Promise.reject(error.message));
+}
+
 const getDiscoveryHabitsForUser = (username: String): Promise<array<Habit>> => {
     return axios.get(`/api/habit/user/${username}/discovery`)
         .then(response => response.data)
         .catch(error => Promise.reject(error.message));
 }
 
-export { getDiscoveryHabitsForUser };
+export { getDiscoveryHabitsForUser, getHabitsForUser };
 export default getHabit;
