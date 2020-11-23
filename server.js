@@ -23,14 +23,13 @@ mongoose.connection.on('connected', () => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// const HabitPost = require('./models/habitPost');
 // const newHabitPost = new HabitPost({
 //     habitName: 'Learn French',
-//     username: 'Ryan',
-//     content: 'Help the duolingo owl is outside my window, what do I do I am scared.',
+//     username: 'Jean',
+//     content: 'Test post from Jean',
 // });
 // newHabitPost.save();
-// newHabit.save();
+// newHabitPost.save();
 
 
 // const findCondition = { 'username': 'Ryan', 'habitName': 'Learn French' };
