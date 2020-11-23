@@ -18,7 +18,7 @@ const FeedPage = ({ username }: Props) => {
             setFeedHabitPosts(feedHabitPosts);
             setLoading(false);
         })
-    }, [username])
+    }, [username]);
 
     return (
         <>

@@ -12,14 +12,17 @@ type Props = {
 
 const FeedPostsCard = ({ username, feedHabitPosts }: Props) => {
     return (
-        <Paper className={'feed-posts-card'}>
+        <>
             <div className={'feed-posts-card__label'}>
                 {username}'s Feed:
             </div>
-            {feedHabitPosts.map((feedHabitPost, index) => (
-                <HabitPost habitPost={feedHabitPost} key={index} />
-            ))}
-        </Paper>
+            <Paper className={'feed-posts-card'}>
+                <div className={'feed-posts-card__margin'} />
+                {feedHabitPosts.map((feedHabitPost, index) => (
+                    <HabitPost habitPost={feedHabitPost} key={index} />
+                ))}
+            </Paper>
+        </>
     )
 }
 

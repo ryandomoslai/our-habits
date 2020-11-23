@@ -2,6 +2,7 @@
 import React from 'react';
 import type { HabitPost as HabitPostType } from "../../types/HabitPost";
 import Button from "@material-ui/core/Button";
+import './habit-post.css';
 
 type Props = {
     habitPost: HabitPostType

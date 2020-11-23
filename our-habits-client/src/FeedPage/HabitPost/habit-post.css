@@ -1,13 +1,19 @@
-.user-post__container {
+.habit-post__container {
     display: flex;
     flex-direction: column;
-    height: 120px;
+    height: 150px;
     padding-top: 20px;
     border-top: gainsboro 1px solid;
     margin-left: 8px;
 }
 
-.user-post__top-bar {
+.habit-post__top-bar {
+    color: gray;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.habit-post__middle-bar {
     display: flex;
     justify-content: space-between;
     margin-right: 8px;
@@ -15,19 +21,20 @@
     align-items: center;
 }
 
-.user-post__top-bar-left {
+.habit-post__middle-bar-left {
     display: flex;
 }
 
-.user-post__habit {
+.habit-post__habit {
     margin-right: 8px;
     font-weight: bold;
 }
 
-.user-post__like-text {
+.habit-post__like-text {
     color: gray;
 }
 
-.user-post__content {
+.habit-post__content {
     overflow-y: scroll;
 }
+

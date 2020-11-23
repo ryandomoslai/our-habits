@@ -4,7 +4,13 @@
     height: 30px;
     position: fixed;
     top: 0;
+    background-color: #fff;
     border-bottom: gainsboro 1px solid;
     font-weight: bold;
     padding-left: 8px;
+    z-index: 100;
+}
+
+.feed-posts-card__margin {
+    height: 38px;
 }
