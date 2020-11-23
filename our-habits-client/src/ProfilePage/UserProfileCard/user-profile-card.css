@@ -1,0 +1,32 @@
+.user-profile-card {
+    margin-top: 8px;
+}
+
+.user-profile-card__container {
+    display: flex;
+}
+
+.user-profile-card__image {
+    width: 40%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-profile-card__info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 200px;
+}
+
+.user-profile-card__text-container {
+    display: flex;
+    margin-top: 8px;
+}
+
+.user-profile-card__text-label {
+    font-weight: bold;
+    margin-right: 8px;
+}

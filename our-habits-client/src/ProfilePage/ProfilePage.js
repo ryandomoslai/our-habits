@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import getUser from '../api/getUser';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
+import UserProfileCard from "./UserProfileCard";
 
 type Props = {
     username: string
@@ -20,10 +20,7 @@ const ProfilePage = ({ username }: Props) => {
             {!user ?
                 (<CircularProgress />) :
                 (<Container>
-                    <Paper>
-                        {user.username}'s Profile{' '}
-                        {user.bio}
-                    </Paper>
+                    <UserProfileCard user={user} />
                 </Container>)
             }
         </>
