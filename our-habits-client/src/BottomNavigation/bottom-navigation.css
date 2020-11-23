@@ -3,3 +3,7 @@
     position: fixed;
     bottom: 0;
 }
+
+.bottom-navigation__margin {
+    margin-bottom: 56px;
+}

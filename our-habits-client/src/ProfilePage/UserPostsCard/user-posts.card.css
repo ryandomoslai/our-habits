@@ -1,0 +1,10 @@
+.user-posts-card {
+    margin-top: 12px;
+}
+
+.user-posts-card__label {
+    margin-left: 8px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    padding-top: 8px;
+}

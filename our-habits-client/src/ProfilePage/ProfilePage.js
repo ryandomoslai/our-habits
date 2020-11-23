@@ -6,6 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import Container from '@material-ui/core/Container';
 import UserProfileCard from "./UserProfileCard";
 import TopHabitsCard from "./TopHabitsCard";
+import UserPostsCard from "./UserPostsCard";
 
 type Props = {
     username: string
@@ -31,6 +32,8 @@ const ProfilePage = ({ username }: Props) => {
                 (<Container>
                     <UserProfileCard user={user} />
                     <TopHabitsCard habitScores={habitScores} />
+                    <UserPostsCard username={username} userHabitPosts={[]} />
+
                 </Container>)
             }
         </>
