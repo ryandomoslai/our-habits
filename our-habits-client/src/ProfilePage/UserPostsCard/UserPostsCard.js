@@ -16,8 +16,8 @@ const UserPostsCard = ({ username, userHabitPosts }: Props) => {
             <div className={'user-posts-card__label'}>
                 {username}'s Posts:
             </div>
-            {userHabitPosts.map(userPost => (
-                <UserPost userHabitPost={userPost} />
+            {userHabitPosts.map((userPost, index) => (
+                <UserPost key={index} userHabitPost={userPost} />
             ))}
         </Paper>
     )

@@ -1,0 +1,10 @@
+.feed-posts-card__label {
+    padding-top: 8px;
+    width: 100%;
+    height: 30px;
+    position: fixed;
+    top: 0;
+    border-bottom: gainsboro 1px solid;
+    font-weight: bold;
+    padding-left: 8px;
+}

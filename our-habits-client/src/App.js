@@ -13,7 +13,7 @@ const App = () => {
             <ProfilePage username={'Ryan'} />
           </Route>
           <Route exact path="/">
-            <FeedPage userName={'test'} />
+            <FeedPage username={'Ryan'} />
           </Route>
           <Route exact path="/habits">
             <MyHabitsPage userName={'test'} />

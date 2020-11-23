@@ -1,15 +1,34 @@
 // @flow
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import FeedPostsCard from "./FeedPostsCard";
+import Container from '@material-ui/core/Container';
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { getHabitPostsForUser } from "../api/getHabitPosts";
 
 type Props = {
-    userName: string
+    username: string
 };
 
-const FeedPage = ({ userName }: Props) => {
+const FeedPage = ({ username }: Props) => {
+    const [feedHabitPosts, setFeedHabitPosts] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        Promise.all([getHabitPostsForUser(username)]).then(([feedHabitPosts]) => {
+            setFeedHabitPosts(feedHabitPosts);
+            setLoading(false);
+        })
+    }, [username])
+
     return (
-        <div>
-            {userName}'s Feed
-        </div>
+        <>
+            {loading ?
+                (<CircularProgress />) :
+                (<Container>
+                    <FeedPostsCard username={username} feedHabitPosts={feedHabitPosts} />
+                </Container>)
+            }
+        </>
     )
 }
 
