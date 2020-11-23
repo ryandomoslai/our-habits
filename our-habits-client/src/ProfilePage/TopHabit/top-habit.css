@@ -2,6 +2,7 @@
     width: 100px;
     height: 100px;
     position: relative;
+    margin-bottom: 8px;
 }
 
 .top-habit__icon {

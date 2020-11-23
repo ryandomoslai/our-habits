@@ -1,7 +1,10 @@
 .top-habits-card__label {
     margin-left: 8px;
     font-weight: bold;
-    margin-bottom: 8px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    margin-bottom: 20px;
+    border-bottom: gainsboro 1px solid;
 }
 
 .top-habits-card__habit-container {
