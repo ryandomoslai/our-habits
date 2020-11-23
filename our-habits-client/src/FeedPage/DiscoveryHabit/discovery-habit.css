@@ -1,0 +1,20 @@
+.discovery-habit {
+    width: 100px;
+    height: 70px;
+    position: relative;
+    margin-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.discovery-habit__icon {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.discovery-habit__text {
+    text-align: center;
+    overflow-x: scroll;
+}

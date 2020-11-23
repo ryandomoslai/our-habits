@@ -53,13 +53,12 @@ app.use(express.urlencoded({ extended: true }));
 // });
 
 
-// const HabitScore = require('./models/habitScore');
-// const newHabitScore = new HabitScore({
-//     habitName: 'Read',
-//     username: 'Ryan',
-//     currentStreak: 0,
-//     bestStreak: 0,
-//     totalScore: 0
+// const Habit = require('./models/habit');
+// const newHabitScore = new Habit({
+//     icon: 'default',
+//     name: 'lower followers',
+//     description: 'For those who want to make their bed',
+//     followers: 2
 // });
 // newHabitScore.save();
 

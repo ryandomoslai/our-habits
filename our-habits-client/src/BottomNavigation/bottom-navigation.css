@@ -2,6 +2,7 @@
     width: 100%;
     position: fixed;
     bottom: 0;
+    border-top: gainsboro 1px solid;
 }
 
 .bottom-navigation__margin {

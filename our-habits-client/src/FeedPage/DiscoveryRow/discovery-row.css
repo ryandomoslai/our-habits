@@ -1,0 +1,27 @@
+.discovery-row__container {
+    width: 100%;
+    position: fixed;
+    bottom: 57px;
+    height: 120px;
+    background-color: #fff;
+    border-top: gainsboro 1px solid;
+}
+
+.discovery-row__label {
+    margin-left: 8px;
+    font-weight: bold;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    margin-bottom: 8px;
+    border-bottom: gainsboro 1px solid;
+}
+
+.discovery-row__habit-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.discovery-row__margin {
+    height: 121px;
+}
+

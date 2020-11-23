@@ -4,6 +4,8 @@ import FeedPostsCard from "./FeedPostsCard";
 import Container from '@material-ui/core/Container';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getHabitPostsForUser } from "../api/getHabitPosts";
+import DiscoveryRow from "./DiscoveryRow";
+import { getDiscoveryHabitsForUser } from "../api/getHabit";
 
 type Props = {
     username: string
@@ -11,11 +13,19 @@ type Props = {
 
 const FeedPage = ({ username }: Props) => {
     const [feedHabitPosts, setFeedHabitPosts] = useState(null);
+    const [discoveryHabits, setDiscoveryHabits] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        Promise.all([getHabitPostsForUser(username)]).then(([feedHabitPosts]) => {
+        Promise.all([
+            getHabitPostsForUser(username),
+            getDiscoveryHabitsForUser(username)
+        ]).then(([
+            feedHabitPosts,
+            discoveryHabits
+        ]) => {
             setFeedHabitPosts(feedHabitPosts);
+            setDiscoveryHabits(discoveryHabits);
             setLoading(false);
         })
     }, [username]);
@@ -24,9 +34,12 @@ const FeedPage = ({ username }: Props) => {
         <>
             {loading ?
                 (<CircularProgress />) :
-                (<Container>
-                    <FeedPostsCard username={username} feedHabitPosts={feedHabitPosts} />
-                </Container>)
+                (<>
+                    <Container>
+                        <FeedPostsCard username={username} feedHabitPosts={feedHabitPosts} />
+                    </Container>
+                    <DiscoveryRow discoveryHabits={discoveryHabits} />
+                </>)
             }
         </>
     )

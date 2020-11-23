@@ -2,7 +2,8 @@
 type Habit = {
     name: String,
     description: String,
-    icon: String
+    icon: String,
+    followers: Number
 };
 
 export type { Habit };

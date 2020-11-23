@@ -7,6 +7,10 @@ const HabitSchema = new Schema({
     icon: {
         type: String,
         default: 'default'
+    },
+    followers: {
+        type: Number,
+        default: 0
     }
 });
 
