@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import getUser from '../api/getUser';
 import { getHabitScoresForUser } from "../api/getHabitScores";
+import { getHabitPostsForUser } from '../api/getHabitPosts';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Container from '@material-ui/core/Container';
 import UserProfileCard from "./UserProfileCard";
@@ -15,12 +16,22 @@ type Props = {
 const ProfilePage = ({ username }: Props) => {
     const [user, setUser] = useState(null);
     const [habitScores, setHabitScores] = useState(null);
+    const [habitPosts, setHabitPosts] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        Promise.all([getUser(username), getHabitScoresForUser(username)]).then(([user, habitScores]) => {
+        Promise.all([
+            getUser(username),
+            getHabitScoresForUser(username),
+            getHabitPostsForUser(username)
+        ]).then(([
+            user,
+            habitScores,
+            habitPosts
+        ]) => {
             setUser(user);
             setHabitScores(habitScores);
+            setHabitPosts(habitPosts)
             setLoading(false);
         });
     }, [username]);
@@ -32,8 +43,7 @@ const ProfilePage = ({ username }: Props) => {
                 (<Container>
                     <UserProfileCard user={user} />
                     <TopHabitsCard habitScores={habitScores} />
-                    <UserPostsCard username={username} userHabitPosts={[]} />
-
+                    <UserPostsCard username={username} userHabitPosts={habitPosts} />
                 </Container>)
             }
         </>

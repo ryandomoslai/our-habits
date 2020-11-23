@@ -10,14 +10,14 @@ type Props = {
     userHabitPosts: HabitPost[]
 }
 
-const UserPostsCard = ({ username, userPosts = [1, 2, 3, 4, 5, 6] }: Props) => {
+const UserPostsCard = ({ username, userHabitPosts }: Props) => {
     return (
         <Paper className={'user-posts-card'}>
             <div className={'user-posts-card__label'}>
                 {username}'s Posts:
             </div>
-            {userPosts.map(userPost => (
-                <UserPost key={userPost} />
+            {userHabitPosts.map(userPost => (
+                <UserPost userHabitPost={userPost} />
             ))}
         </Paper>
     )

@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 8080;
 const userRoutes = require('./routes/user');
 const habitRoutes = require('./routes/habit');
 const habitScoreRoutes = require('./routes/habitScore');
+const habitPostRoutes = require('./routes/habitPost');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/our-habits-db', {
     useNewUrlParser: true,
@@ -21,12 +22,14 @@ mongoose.connection.on('connected', () => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//
-// const Habit = require('./models/habit');
-// const newHabit = new Habit({
-//     name: 'Learn French',
-//     description: 'For those who want to learn french.'
+
+// const HabitPost = require('./models/habitPost');
+// const newHabitPost = new HabitPost({
+//     habitName: 'Learn French',
+//     username: 'Ryan',
+//     content: 'Help the duolingo owl is outside my window, what do I do I am scared.',
 // });
+// newHabitPost.save();
 // newHabit.save();
 
 
@@ -68,6 +71,7 @@ app.use(morgan('tiny'));
 app.use('/api', userRoutes);
 app.use('/api', habitRoutes);
 app.use('/api', habitScoreRoutes);
+app.use('/api', habitPostRoutes);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('./our-habits-client/build'));
