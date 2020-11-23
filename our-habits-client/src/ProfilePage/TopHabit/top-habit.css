@@ -1,0 +1,20 @@
+.top-habit {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.top-habit__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.top-habit__text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    height: 100px;
+}
