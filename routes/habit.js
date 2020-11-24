@@ -30,4 +30,32 @@ router.get(`/habit/user/:username/discovery`, (req, res) => {
     });
 });
 
+router.get('/habit', (req, res) => {
+    Habit.find({ 'name': { "$regex": req.query.search, "$options": "i" } }).then(data => {
+        res.json(data);
+    });
+});
+
+router.post('/habit/save/user/:username', (req, res) => {
+    const data = req.body;
+
+    console.log(data);
+
+    const newHabit = new Habit(data);
+
+    console.log(newHabit);
+    newHabit.save(() => {
+        const newHabitScore = new HabitScore({
+            habitName: newHabit.name,
+            username: req.params.username
+        });
+
+        newHabitScore.save(() => {
+            res.json({
+                msg: 'New habit created'
+            });
+        });
+    });
+})
+
 module.exports = router;

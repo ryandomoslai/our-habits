@@ -1,0 +1,28 @@
+.search-create-modal__content {
+    width: 300px;
+}
+
+.search-create-modal__input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    overflow: hidden;
+}
+
+.search-create-modal__button {
+    margin-right: 32px;
+}
+
+.search-create-modal__results {
+    height: 350px;
+    overflow-y: scroll;
+}
+
+.search-create-modal__entry {
+    margin-top: 20px;
+}
+
+.search-create-modal__description {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

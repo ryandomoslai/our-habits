@@ -10,7 +10,7 @@ const HabitSchema = new Schema({
     },
     followers: {
         type: Number,
-        default: 0
+        default: 1
     }
 });
 

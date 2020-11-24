@@ -1,9 +1,15 @@
 // @flow
-import React from 'react';
+import React, { useState } from 'react';
 import './search-row.css';
 import Button from "@material-ui/core/Button";
+import SearchCreateModal from "../SearchCreateModal";
 
-const SearchRow = () => {
+type Props = {
+    username: string
+}
+
+const SearchRow = ({ username }: Props) => {
+    const [modalOpen, setModalOpen] = useState(false);
     return (
         <>
             <div className={'search-row__margin'} />
@@ -12,11 +18,12 @@ const SearchRow = () => {
                     My Habits:
                 </div>
                 <div className={'search-row__search-bar'}>
-                    <Button size={'small'} variant={'contained'} color={'primary'}>
+                    <Button onClick={() => setModalOpen(true)} size={'small'} variant={'contained'} color={'primary'}>
                         Search and create
                     </Button>
                 </div>
             </div>
+            <SearchCreateModal username={username} open={modalOpen} setOpen={setModalOpen} />
         </>
     )
 }

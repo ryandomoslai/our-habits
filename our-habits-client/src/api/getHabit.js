@@ -24,5 +24,20 @@ const getDiscoveryHabitsForUser = (username: String): Promise<array<Habit>> => {
         .catch(error => Promise.reject(error.message));
 }
 
-export { getDiscoveryHabitsForUser, getHabitsForUser };
+const getHabitsForSearch = (search: String): Promise<array<Habit>> => {
+    return axios.get(`/api/habit?search=${search}`)
+        .then(response => response.data)
+        .catch(error => Promise.reject(error.message));
+}
+
+const createHabit = (username: string, habitName: string, bio: string): Promise<array<Habit>> => {
+    return axios.post(`/api/habit/save/user/${username}`, {
+        name: habitName,
+        description: bio
+    })
+        .then(response => response.data)
+        .catch(error => Promise.reject(error.message));
+}
+
+export { getDiscoveryHabitsForUser, getHabitsForUser, getHabitsForSearch, createHabit };
 export default getHabit;

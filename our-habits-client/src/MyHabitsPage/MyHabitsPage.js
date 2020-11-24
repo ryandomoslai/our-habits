@@ -35,7 +35,7 @@ const MyHabitsPage = ({ username }: Props) => {
             {loading ?
                 (<CircularProgress />) :
                 (<>
-                    <SearchRow />
+                    <SearchRow username={username} />
                     <Container>
                         <MyHabitsCard habits={habits} habitScores={habitScores} />
                     </Container>
