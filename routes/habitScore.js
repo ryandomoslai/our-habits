@@ -3,9 +3,11 @@ const router = express.Router();
 const HabitScore = require('../models/habitScore');
 
 router.get('/habit-scores/user/:username', (req, res) => {
-    HabitScore.find({ 'username': req.params.username }).then(data => {
-        res.json(data);
-    });
+    HabitScore.find({ 'username': req.params.username })
+        .sort('-currentStreak')
+        .exec((err, data) => {
+            res.json(data);
+        });
 });
 
 router.post('/habit-scores/start/:habitName', (req, res) => {
@@ -27,7 +29,7 @@ router.patch('/habit-scores/complete/:habitName', (req, res) => {
     HabitScore.findOne(findCondition).then(result => {
         const update = {
             currentStreak: result.currentStreak + 1,
-            totalScore: result.currentStreak + 1,
+            totalScore: result.totalScore + 1,
             lastCompleted: new Date()
         };
         if (update.currentStreak > result.bestStreak) {
