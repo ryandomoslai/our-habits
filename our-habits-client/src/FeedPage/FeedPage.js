@@ -27,7 +27,7 @@ const FeedPage = ({ username }: Props) => {
             setFeedHabitPosts(feedHabitPosts);
             setDiscoveryHabits(discoveryHabits);
             setLoading(false);
-        })
+        });
     }, [username]);
 
     return (
