@@ -1,0 +1,30 @@
+.feed-post-row__container {
+    width: 100%;
+    position: fixed;
+    bottom: 57px;
+    height: 120px;
+    background-color: #fff;
+    border-top: gainsboro 1px solid;
+}
+
+.feed-post-row__label {
+    margin-left: 8px;
+    font-weight: bold;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    margin-bottom: 8px;
+    border-bottom: gainsboro 1px solid;
+}
+
+.feed-post-row__input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 8px;
+    margin-right: 8px;
+    align-items: baseline;
+}
+
+.feed-post-row__margin {
+    height: 121px;
+}
+

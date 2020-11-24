@@ -7,6 +7,7 @@ import { getHabitPostsForUser } from "../api/getHabitPosts";
 import DiscoveryRow from "./DiscoveryRow";
 import { getDiscoveryHabitsForUser } from "../api/getHabit";
 import { getHabitPostsForHabit } from "../api/getHabitPosts";
+import FeedPostRow from "./FeedPostRow";
 
 type Props = {
     username: string,
@@ -56,7 +57,10 @@ const FeedPage = ({ username, selectedHabitName, setSelectedHabitName }: Props) 
                     <Container>
                         <FeedPostsCard selectedHabitName={selectedHabitName} setSelectedHabitName={setSelectedHabitName} username={username} feedHabitPosts={feedHabitPosts} />
                     </Container>
-                    {selectedHabitName === null ? (<DiscoveryRow setSelectedHabitName={setSelectedHabitName} discoveryHabits={discoveryHabits} />) : (<div />)}
+                    {selectedHabitName === null ?
+                        (<DiscoveryRow setSelectedHabitName={setSelectedHabitName} discoveryHabits={discoveryHabits} />) :
+                        (<FeedPostRow setFeedHabitPosts={setFeedHabitPosts} username={username} selectedHabitName={selectedHabitName} />)
+                    }
                 </>)
             }
         </>

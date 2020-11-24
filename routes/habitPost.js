@@ -22,9 +22,23 @@ router.get('/habit-posts/user/:username/feed', (req, res) => {
 });
 
 router.get('/habit-posts/habit/:habitName', (req, res) => {
-    HabitPost.find({ 'habitName': req.params.habitName }).then(data => {
+    HabitPost.find({ 'habitName': req.params.habitName }).sort('-Date').exec((err, data) => {
         res.json(data);
     });
 });
+
+router.post('/habit-posts/create/:username', (req, res) => {
+    const data = req.body;
+
+    const newHabitPost = new HabitPost({
+        username: req.params.username,
+        content: data.content,
+        habitName: data.habitName
+    });
+
+    newHabitPost.save().then(data => {
+        res.json(data);
+    });
+})
 
 module.exports = router;
