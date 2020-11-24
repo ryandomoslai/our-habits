@@ -5,6 +5,7 @@ import { getHabitScoresForUser } from "../api/getHabitScores";
 import { getHabitsForUser } from "../api/getHabit";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import MyHabitsCard from "./MyHabitsCard";
+import SearchRow from "./SearchRow";
 
 type Props = {
     username: string
@@ -34,9 +35,7 @@ const MyHabitsPage = ({ username }: Props) => {
             {loading ?
                 (<CircularProgress />) :
                 (<>
-                    <div className={'search-bar__dummy'}>
-
-                    </div>
+                    <SearchRow />
                     <Container>
                         <MyHabitsCard habits={habits} habitScores={habitScores} />
                     </Container>
