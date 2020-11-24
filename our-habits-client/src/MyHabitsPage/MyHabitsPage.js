@@ -8,10 +8,11 @@ import MyHabitsCard from "./MyHabitsCard";
 import SearchRow from "./SearchRow";
 
 type Props = {
-    username: string
+    username: string,
+    setSelectedHabitName: string => void
 };
 
-const MyHabitsPage = ({ username }: Props) => {
+const MyHabitsPage = ({ username, setSelectedHabitName }: Props) => {
     const [habitScores, setHabitScores] = useState(null);
     const [habits, setHabits] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -35,9 +36,9 @@ const MyHabitsPage = ({ username }: Props) => {
             {loading ?
                 (<CircularProgress />) :
                 (<>
-                    <SearchRow username={username} />
+                    <SearchRow setSelectedHabitName={setSelectedHabitName} username={username} />
                     <Container>
-                        <MyHabitsCard habits={habits} habitScores={habitScores} />
+                        <MyHabitsCard setSelectedHabitName={setSelectedHabitName} habits={habits} habitScores={habitScores} />
                     </Container>
                 </>)
             }

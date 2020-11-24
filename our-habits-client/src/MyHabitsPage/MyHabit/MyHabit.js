@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './my-habit.css';
 import type {Habit} from "../../types/Habit";
 import type {HabitScore} from "../../types/HabitScore";
@@ -7,11 +8,18 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 type Props = {
     habit: Habit,
-    habitScore: HabitScore
+    habitScore: HabitScore,
+    setSelectedHabitName: string => void
 }
 
-const MyHabit = ({ habit, habitScore }: Props) => {
+const MyHabit = ({ habit, habitScore, setSelectedHabitName }: Props) => {
+    const history = useHistory();
     const [checkCircleColor, setCheckCircleColor] = useState('action')
+
+    const handleHabitClick = () => {
+        setSelectedHabitName(habit.name);
+        history.push('/');
+    }
 
     const handleCheckCircleClick = () => {
         if (checkCircleColor === 'action') {
@@ -26,7 +34,7 @@ const MyHabit = ({ habit, habitScore }: Props) => {
                     <div className={'my-habit__habit-text'}>
                         {habit.name}
                     </div>
-                    <div className={'my-habit__habit-icon'}>
+                    <div onClick={handleHabitClick} className={'my-habit__habit-icon'}>
                         <IconHandler iconName={habit.icon} />
                     </div>
                 </div>

@@ -7,14 +7,15 @@ import MyHabit from "../MyHabit";
 
 type Props = {
     habits: Habit[],
-    habitScores: HabitScore[]
+    habitScores: HabitScore[],
+    setSelectedHabitName: string => void
 }
 
-const MyHabitsCard = ({ habits, habitScores }: Props) => {
+const MyHabitsCard = ({ habits, habitScores, setSelectedHabitName }: Props) => {
 
     const mapHabitToScore = habits.map((habit, index) => {
         const habitScore = habitScores.find(habitScore => habitScore.habitName === habit.name);
-        return (<MyHabit key={index} habit={habit} habitScore={habitScore} />);
+        return (<MyHabit setSelectedHabitName={setSelectedHabitName} key={index} habit={habit} habitScore={habitScore} />);
     });
 
     return (

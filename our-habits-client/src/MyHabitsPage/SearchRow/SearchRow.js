@@ -5,10 +5,11 @@ import Button from "@material-ui/core/Button";
 import SearchCreateModal from "../SearchCreateModal";
 
 type Props = {
-    username: string
+    username: string,
+    setSelectedHabitName: string => void
 }
 
-const SearchRow = ({ username }: Props) => {
+const SearchRow = ({ username, setSelectedHabitName }: Props) => {
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <>
@@ -23,7 +24,7 @@ const SearchRow = ({ username }: Props) => {
                     </Button>
                 </div>
             </div>
-            <SearchCreateModal username={username} open={modalOpen} setOpen={setModalOpen} />
+            <SearchCreateModal setSelectedHabitName={setSelectedHabitName} username={username} open={modalOpen} setOpen={setModalOpen} />
         </>
     )
 }

@@ -1,5 +1,6 @@
 // @flow
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -13,10 +14,12 @@ import { getHabitsForSearch, createHabit } from "../../api/getHabit";
 type Props = {
     username: string,
     open: boolean,
-    setOpen: boolean => void
+    setOpen: boolean => void,
+    setSelectedHabitName: string => void
 }
 
-const SearchCreateModal = ({ username, open, setOpen }: Props) => {
+const SearchCreateModal = ({ username, open, setOpen, setSelectedHabitName }: Props) => {
+    const history = useHistory();
     const [results, setResults] = useState(null);
     const [description, setDescription] = useState('');
     const [searchInput, setSearchInput] = useState('');
@@ -57,11 +60,18 @@ const SearchCreateModal = ({ username, open, setOpen }: Props) => {
             );
         }
         if (results !== null) {
-            return (results.map((entry, index) => (
-                <div className={'search-create-modal__entry'} key={index}>
-                    {entry.name}
-                </div>
-            )));
+            return (results.map((entry, index) => {
+                const handleResultClick = () => {
+                    setSelectedHabitName(entry.name);
+                    history.push('/');
+                }
+
+                return (
+                    <div onClick={handleResultClick} className={'search-create-modal__entry'} key={index}>
+                        {entry.name}
+                    </div>
+                )
+            }));
         }
         return (<div />);
     }
