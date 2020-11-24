@@ -6,7 +6,7 @@ import MyHabitsPage from './MyHabitsPage';
 import FeedPage from "./FeedPage";
 
 const App = () => {
-  const [selectedHabitName, setSelectedHabitName] = useState('Learn French');
+  const [selectedHabitName, setSelectedHabitName] = useState(null);
 
   return (
       <HashRouter>

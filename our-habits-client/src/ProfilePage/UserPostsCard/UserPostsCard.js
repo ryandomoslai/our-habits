@@ -7,17 +7,18 @@ import UserPost from "../UserPost";
 
 type Props = {
     username: String,
-    userHabitPosts: HabitPost[]
+    userHabitPosts: HabitPost[],
+    setSelectedHabitName: string => void
 }
 
-const UserPostsCard = ({ username, userHabitPosts }: Props) => {
+const UserPostsCard = ({ username, userHabitPosts, setSelectedHabitName }: Props) => {
     return (
         <Paper className={'user-posts-card'}>
             <div className={'user-posts-card__label'}>
                 {username}'s Posts:
             </div>
             {userHabitPosts.map((userPost, index) => (
-                <UserPost key={index} userHabitPost={userPost} />
+                <UserPost setSelectedHabitName={setSelectedHabitName} key={index} userHabitPost={userPost} />
             ))}
         </Paper>
     )

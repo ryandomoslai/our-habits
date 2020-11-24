@@ -10,10 +10,11 @@ import TopHabitsCard from "./TopHabitsCard";
 import UserPostsCard from "./UserPostsCard";
 
 type Props = {
-    username: string
+    username: string,
+    setSelectedHabitName: string => void
 }
 
-const ProfilePage = ({ username }: Props) => {
+const ProfilePage = ({ username, setSelectedHabitName }: Props) => {
     const [user, setUser] = useState(null);
     const [habitScores, setHabitScores] = useState(null);
     const [habitPosts, setHabitPosts] = useState(null);
@@ -42,8 +43,8 @@ const ProfilePage = ({ username }: Props) => {
                 (<CircularProgress />) :
                 (<Container>
                     <UserProfileCard user={user} />
-                    <TopHabitsCard habitScores={habitScores} />
-                    <UserPostsCard username={username} userHabitPosts={habitPosts} />
+                    <TopHabitsCard setSelectedHabitName={setSelectedHabitName} habitScores={habitScores} />
+                    <UserPostsCard setSelectedHabitName={setSelectedHabitName} username={username} userHabitPosts={habitPosts} />
                 </Container>)
             }
         </>

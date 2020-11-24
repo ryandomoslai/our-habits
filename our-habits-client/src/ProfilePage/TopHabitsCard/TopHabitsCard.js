@@ -5,10 +5,11 @@ import './top-habits-card.css';
 import TopHabit from "../TopHabit";
 
 type Props = {
-    habitScores: []
+    habitScores: [],
+    setSelectedHabitName: string => void
 }
 
-const TopHabitsCard = ({ habitScores }: Props) => {
+const TopHabitsCard = ({ habitScores, setSelectedHabitName }: Props) => {
     const topThreeHabitScores = habitScores.slice(0, 3);
 
     return (
@@ -17,9 +18,9 @@ const TopHabitsCard = ({ habitScores }: Props) => {
                 Top 3 Longest Streaks:
             </div>
             <div className={'top-habits-card__habit-container'}>
-                <TopHabit habitScore={topThreeHabitScores[0]} />
-                <TopHabit habitScore={topThreeHabitScores[1]} />
-                <TopHabit habitScore={topThreeHabitScores[2]} />
+                <TopHabit setSelectedHabitName={setSelectedHabitName} habitScore={topThreeHabitScores[0]} />
+                <TopHabit setSelectedHabitName={setSelectedHabitName} habitScore={topThreeHabitScores[1]} />
+                <TopHabit setSelectedHabitName={setSelectedHabitName} habitScore={topThreeHabitScores[2]} />
             </div>
         </Paper>
     )
