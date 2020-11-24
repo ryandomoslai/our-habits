@@ -6,29 +6,47 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { getHabitPostsForUser } from "../api/getHabitPosts";
 import DiscoveryRow from "./DiscoveryRow";
 import { getDiscoveryHabitsForUser } from "../api/getHabit";
+import { getHabitPostsForHabit } from "../api/getHabitPosts";
 
 type Props = {
-    username: string
+    username: string,
+    selectedHabitName: string,
+    setSelectedHabitName: string => void
 };
 
-const FeedPage = ({ username }: Props) => {
+const FeedPage = ({ username, selectedHabitName, setSelectedHabitName }: Props) => {
     const [feedHabitPosts, setFeedHabitPosts] = useState(null);
     const [discoveryHabits, setDiscoveryHabits] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        Promise.all([
-            getHabitPostsForUser(username),
-            getDiscoveryHabitsForUser(username)
-        ]).then(([
-            feedHabitPosts,
-            discoveryHabits
-        ]) => {
-            setFeedHabitPosts(feedHabitPosts);
-            setDiscoveryHabits(discoveryHabits);
-            setLoading(false);
-        });
-    }, [username]);
+        setLoading(true);
+        if (selectedHabitName !== null) {
+            Promise.all([
+                getHabitPostsForHabit(selectedHabitName),
+                getDiscoveryHabitsForUser(username)
+            ]).then(([
+                         feedHabitPosts,
+                         discoveryHabits
+                     ]) => {
+                setFeedHabitPosts(feedHabitPosts);
+                setDiscoveryHabits(discoveryHabits);
+                setLoading(false);
+            });
+        } else {
+            Promise.all([
+                getHabitPostsForUser(username),
+                getDiscoveryHabitsForUser(username)
+            ]).then(([
+                 feedHabitPosts,
+                 discoveryHabits
+             ]) => {
+                setFeedHabitPosts(feedHabitPosts);
+                setDiscoveryHabits(discoveryHabits);
+                setLoading(false);
+            });
+        }
+    }, [username, selectedHabitName]);
 
     return (
         <>
@@ -36,9 +54,9 @@ const FeedPage = ({ username }: Props) => {
                 (<CircularProgress />) :
                 (<>
                     <Container>
-                        <FeedPostsCard username={username} feedHabitPosts={feedHabitPosts} />
+                        <FeedPostsCard setSelectedHabitName={setSelectedHabitName} username={username} feedHabitPosts={feedHabitPosts} />
                     </Container>
-                    <DiscoveryRow discoveryHabits={discoveryHabits} />
+                    {selectedHabitName === null ? (<DiscoveryRow setSelectedHabitName={setSelectedHabitName} discoveryHabits={discoveryHabits} />) : (<div />)}
                 </>)
             }
         </>

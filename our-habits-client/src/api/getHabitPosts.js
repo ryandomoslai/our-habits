@@ -14,4 +14,10 @@ const getHabitPostsForUser = (username: String): Promise<Array<HabitPost>> => {
         .catch(error => Promise.reject(error.message));
 }
 
-export { getHabitPostsByUser, getHabitPostsForUser }
+const getHabitPostsForHabit = (habitName: string): Promise<Array<HabitPost>> => {
+    return axios.get(`/api/habit-posts/habit/${habitName}`)
+        .then(response => response.data)
+        .catch(error => Promise.reject(error.message));
+}
+
+export { getHabitPostsByUser, getHabitPostsForUser, getHabitPostsForHabit }

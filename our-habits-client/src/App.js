@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom'
 import BottomNavigation from './BottomNavigation';
 import ProfilePage from './ProfilePage';
@@ -6,20 +6,22 @@ import MyHabitsPage from './MyHabitsPage';
 import FeedPage from "./FeedPage";
 
 const App = () => {
+  const [selectedHabitName, setSelectedHabitName] = useState('Learn French');
+
   return (
       <HashRouter>
         <Switch>
           <Route exact path="/profile">
-            <ProfilePage username={'Ryan'} />
+            <ProfilePage setSelectedHabitName={setSelectedHabitName} username={'Ryan'} />
           </Route>
           <Route exact path="/">
-            <FeedPage username={'Ryan'} />
+            <FeedPage selectedHabitName={selectedHabitName} setSelectedHabitName={setSelectedHabitName} username={'Ryan'} />
           </Route>
           <Route exact path="/habits">
-            <MyHabitsPage username={'Ryan'} />
+            <MyHabitsPage setSelectedHabitName={setSelectedHabitName} username={'Ryan'} />
           </Route>
         </Switch>
-        <BottomNavigation />
+        <BottomNavigation setSelectedHabitName={setSelectedHabitName} />
       </HashRouter>
   );
 }

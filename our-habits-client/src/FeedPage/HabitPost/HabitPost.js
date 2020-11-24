@@ -1,14 +1,23 @@
 // @flow
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import type { HabitPost as HabitPostType } from "../../types/HabitPost";
 import Button from "@material-ui/core/Button";
 import './habit-post.css';
 
 type Props = {
-    habitPost: HabitPostType
+    habitPost: HabitPostType,
+    setSelectedHabitName: string => void
 }
 
-const HabitPost = ({ habitPost }: Props) => {
+const HabitPost = ({ habitPost, setSelectedHabitName }: Props) => {
+    const history = useHistory();
+
+    const handleFeedButton = () => {
+        setSelectedHabitName(habitPost.habitName);
+        history.push('/');
+    }
+
     return (
         <div className={'habit-post__container'}>
             <div className={'habit-post__top-bar'}>
@@ -24,7 +33,7 @@ const HabitPost = ({ habitPost }: Props) => {
                     </div>
                 </div>
                 <div className={'habit-post__feed-button'}>
-                    <Button size={'small'} variant={'contained'} color={'primary'} fullWidth>
+                    <Button onClick={handleFeedButton} size={'small'} variant={'contained'} color={'primary'} fullWidth>
                         Go to feed
                     </Button>
                 </div>

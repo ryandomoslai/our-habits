@@ -19,6 +19,12 @@ router.get('/habit-posts/user/:username/feed', (req, res) => {
                res.json(data);
             });
     });
-})
+});
+
+router.get('/habit-posts/habit/:habitName', (req, res) => {
+    HabitPost.find({ 'habitName': req.params.habitName }).then(data => {
+        res.json(data);
+    });
+});
 
 module.exports = router;

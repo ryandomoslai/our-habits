@@ -5,10 +5,11 @@ import DiscoveryHabit from "../DiscoveryHabit";
 import type { Habit } from "../../types/Habit";
 
 type Props = {
-    discoveryHabits: Habit[]
+    discoveryHabits: Habit[],
+    setSelectedHabitName: string => void
 }
 
-const DiscoveryRow = ({ discoveryHabits }: Props) => {
+const DiscoveryRow = ({ discoveryHabits, setSelectedHabitName }: Props) => {
     return (
         <>
             <div className={'discovery-row__margin'} />
@@ -18,7 +19,7 @@ const DiscoveryRow = ({ discoveryHabits }: Props) => {
                 </div>
                 <div className={'discovery-row__habit-container'}>
                     {discoveryHabits.map((habit, index) => (
-                        <DiscoveryHabit key={index} habit={habit} />
+                        <DiscoveryHabit setSelectedHabitName={setSelectedHabitName} key={index} habit={habit} />
                     ))}
                 </div>
             </div>

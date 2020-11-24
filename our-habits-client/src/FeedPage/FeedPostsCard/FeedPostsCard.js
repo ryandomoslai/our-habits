@@ -7,10 +7,11 @@ import HabitPost from '../HabitPost';
 
 type Props = {
     username: String,
-    feedHabitPosts: HabitPostType[]
+    feedHabitPosts: HabitPostType[],
+    setSelectedHabitName: string => void
 }
 
-const FeedPostsCard = ({ username, feedHabitPosts }: Props) => {
+const FeedPostsCard = ({ username, feedHabitPosts, setSelectedHabitName }: Props) => {
     return (
         <>
             <div className={'feed-posts-card__label'}>
@@ -19,7 +20,7 @@ const FeedPostsCard = ({ username, feedHabitPosts }: Props) => {
             <Paper className={'feed-posts-card'}>
                 <div className={'feed-posts-card__margin'} />
                 {feedHabitPosts.map((feedHabitPost, index) => (
-                    <HabitPost habitPost={feedHabitPost} key={index} />
+                    <HabitPost setSelectedHabitName={setSelectedHabitName} habitPost={feedHabitPost} key={index} />
                 ))}
             </Paper>
         </>
