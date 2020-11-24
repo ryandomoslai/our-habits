@@ -9,8 +9,15 @@
     font-weight: bold;
     padding-left: 8px;
     z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .feed-posts-card__margin {
     height: 38px;
+}
+
+.feed-posts-card__start-button {
+    margin-right: 40px;
 }

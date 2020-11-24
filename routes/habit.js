@@ -39,11 +39,7 @@ router.get('/habit', (req, res) => {
 router.post('/habit/save/user/:username', (req, res) => {
     const data = req.body;
 
-    console.log(data);
-
     const newHabit = new Habit(data);
-
-    console.log(newHabit);
     newHabit.save(() => {
         const newHabitScore = new HabitScore({
             habitName: newHabit.name,

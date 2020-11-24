@@ -4,7 +4,9 @@ type HabitScore = {
     username: String,
     currentStreak: Number,
     bestStreak: Number,
-    totalScore: Number
+    totalScore: Number,
+    startDate: Date,
+    lastComplted: Date
 };
 
 export type { HabitScore };

@@ -54,7 +54,7 @@ const FeedPage = ({ username, selectedHabitName, setSelectedHabitName }: Props) 
                 (<CircularProgress />) :
                 (<>
                     <Container>
-                        <FeedPostsCard setSelectedHabitName={setSelectedHabitName} username={username} feedHabitPosts={feedHabitPosts} />
+                        <FeedPostsCard selectedHabitName={selectedHabitName} setSelectedHabitName={setSelectedHabitName} username={username} feedHabitPosts={feedHabitPosts} />
                     </Container>
                     {selectedHabitName === null ? (<DiscoveryRow setSelectedHabitName={setSelectedHabitName} discoveryHabits={discoveryHabits} />) : (<div />)}
                 </>)

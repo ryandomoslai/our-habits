@@ -38,3 +38,7 @@
     overflow-y: scroll;
 }
 
+.habit-post__button-spacing {
+    height: 30px;
+}
+

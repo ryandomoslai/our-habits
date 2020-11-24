@@ -15,6 +15,14 @@ const HabitScoreSchema = new Schema({
     totalScore: {
         type: Number,
         default: 0
+    },
+    startDate: {
+        type: Date,
+        default: new Date()
+    },
+    lastCompleted: {
+        type: Date,
+        default: new Date()
     }
 });
 

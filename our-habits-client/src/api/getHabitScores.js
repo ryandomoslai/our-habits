@@ -8,4 +8,12 @@ const getHabitScoresForUser = (username: String): Promise<Array<HabitScore>> => 
         .catch(error => Promise.reject(error.message));
 }
 
-export { getHabitScoresForUser };
+const createHabitScore = (username: string, habitName: string): Promise<HabitScore> => {
+    return axios.post(`/api/habit-scores/start/${habitName}`, {
+        username
+    })
+        .then(response => response.data)
+        .catch(error => Promise.reject(error.message));
+}
+
+export { getHabitScoresForUser, createHabitScore };

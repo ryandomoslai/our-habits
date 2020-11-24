@@ -7,10 +7,11 @@ import './habit-post.css';
 
 type Props = {
     habitPost: HabitPostType,
-    setSelectedHabitName: string => void
+    setSelectedHabitName: string => void,
+    selectedHabitName: string
 }
 
-const HabitPost = ({ habitPost, setSelectedHabitName }: Props) => {
+const HabitPost = ({ habitPost, setSelectedHabitName, selectedHabitName }: Props) => {
     const history = useHistory();
 
     const handleFeedButton = () => {
@@ -32,11 +33,15 @@ const HabitPost = ({ habitPost, setSelectedHabitName }: Props) => {
                         {habitPost.likes} {habitPost.likes === 1 ? 'like' : 'likes'}
                     </div>
                 </div>
-                <div className={'habit-post__feed-button'}>
-                    <Button onClick={handleFeedButton} size={'small'} variant={'contained'} color={'primary'} fullWidth>
-                        Go to feed
-                    </Button>
-                </div>
+                {!selectedHabitName ?
+                    (
+                        <div className={'habit-post__feed-button'}>
+                            <Button onClick={handleFeedButton} size={'small'} variant={'contained'} color={'primary'} fullWidth>
+                                Go to feed
+                            </Button>
+                        </div>
+                    ) : (<div className={'habit-post__button-spacing'} />)
+                }
             </div>
             <div className={'habit-post__content'}>
                 {habitPost.content}
