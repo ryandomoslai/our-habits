@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './my-habit.css';
 import type {Habit} from "../../types/Habit";
 import type {HabitScore} from "../../types/HabitScore";
 import IconHandler from "../../IconHandler";
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { updateHabitScore } from "../../api/getHabitScores";
 
 type Props = {
     habit: Habit,
@@ -14,7 +15,18 @@ type Props = {
 
 const MyHabit = ({ habit, habitScore, setSelectedHabitName }: Props) => {
     const history = useHistory();
-    const [checkCircleColor, setCheckCircleColor] = useState('action')
+
+    const canCompleteHabit = () => {
+        return (new Date(habitScore.lastCompleted).toDateString() !== new Date().toDateString()) ||
+            habitScore.currentStreak === 0;
+    }
+
+    const handleColor = () => {
+        if (canCompleteHabit()) {
+            return 'action';
+        }
+        return 'primary'
+    }
 
     const handleHabitClick = () => {
         setSelectedHabitName(habit.name);
@@ -22,10 +34,14 @@ const MyHabit = ({ habit, habitScore, setSelectedHabitName }: Props) => {
     }
 
     const handleCheckCircleClick = () => {
-        if (checkCircleColor === 'action') {
-            setCheckCircleColor('primary');
+        if (canCompleteHabit()) {
+            updateHabitScore(habitScore.username, habitScore.habitName).then(() => {
+               window.location.reload();
+            });
         }
     }
+
+    const checkColor = handleColor();
 
     return (
         <div className={'my-habit__container'}>
@@ -45,7 +61,7 @@ const MyHabit = ({ habit, habitScore, setSelectedHabitName }: Props) => {
                 </div>
             </div>
             <div className={'my-habit__complete-button'}>
-                <CheckCircleIcon fontSize={'large'} onClick={handleCheckCircleClick} color={checkCircleColor} />
+                <CheckCircleIcon fontSize={'large'} onClick={handleCheckCircleClick} color={checkColor} />
             </div>
         </div>
     )

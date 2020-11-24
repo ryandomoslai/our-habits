@@ -16,4 +16,12 @@ const createHabitScore = (username: string, habitName: string): Promise<HabitSco
         .catch(error => Promise.reject(error.message));
 }
 
-export { getHabitScoresForUser, createHabitScore };
+const updateHabitScore = (username: string, habitName: string): Promise<HabitScore> => {
+    return axios.patch(`/api/habit-scores/complete/${habitName}`, {
+        username
+    })
+        .then(response => response.data)
+        .catch(error => Promise.reject(error.message));
+}
+
+export { getHabitScoresForUser, createHabitScore, updateHabitScore };
